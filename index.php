@@ -6,18 +6,17 @@
 
 <link rel="stylesheet" href="js/themes/base/jquery.ui.all.css">
 <script src="js/jquery-1.7.2.js"></script>
-	<script src="js/external/jquery.bgiframe-2.1.2.js"></script>
-	<script src="js/ui/jquery.ui.core.js"></script>
-	<script src="js/ui/jquery.ui.widget.js"></script>
-	<script src="js/ui/jquery.ui.mouse.js"></script>
-	<script src="js/ui/jquery.ui.draggable.js"></script>
-	<script src="js/ui/jquery.ui.position.js"></script>
-	<script src="js/ui/jquery.ui.resizable.js"></script>
-	<script src="js/ui/jquery.ui.dialog.js"></script>
+<script src="js/external/jquery.bgiframe-2.1.2.js"></script>
+<script src="js/ui/jquery.ui.core.js"></script>
+<script src="js/ui/jquery.ui.widget.js"></script>
+<script src="js/ui/jquery.ui.mouse.js"></script>
+<script src="js/ui/jquery.ui.draggable.js"></script>
+<script src="js/ui/jquery.ui.position.js"></script>
+<script src="js/ui/jquery.ui.resizable.js"></script>
+<script src="js/ui/jquery.ui.dialog.js"></script>
 <script type="text/javascript">
 
 var upload = function(){
-        // Get the form data. This serializes the entire form. pritty easy huh!
         var form = new FormData($('#myform')[0]);
 		
         $.ajax({
@@ -38,14 +37,14 @@ var upload = function(){
             //add error handler for when a error occurs if you want!
             //error: errorfunction,
             data: form,
-            // this is the important stuf you need to overide the usual post behavior
+            //timeout:5000,
+
             cache: false,
             contentType: false,
             processData: false
         });
 }
 
-// Yes outside of the .ready space becouse this is a function not an event listner!
 function progress(e){
     if(e.lengthComputable){
         //this makes a nice fancy progress bar
@@ -89,7 +88,8 @@ function showProcessing(xhr){
 			height: 'auto',
 			width: 'auto'
 				});
-	}, 11)
+		$("#timeoutDialog").dialog("open");
+	}, 11000)
 }
 
 </script>
