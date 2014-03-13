@@ -2,7 +2,11 @@
 $succeed = 0;
 $error = 0;
 $thegoodstuf = '';
-var_dump($_FILES["file"]);exit();
+if (empty($_FILES)){
+	echo 'Upload thất bại';
+	return;
+}
+
 foreach($_FILES["file"]["error"] as $key => $value) {
 	if ($value == UPLOAD_ERR_OK){
 		$succeed++;
@@ -32,7 +36,7 @@ foreach($_FILES["file"]["error"] as $key => $value) {
 		
 
 		// replace file to where you want
-		copy($_FILES['file']['tmp_name'][$key], './upload/'.$name);
+		//copy($_FILES['file']['tmp_name'][$key], './upload/'.$name);
 
 		$size = filesize($_FILES['file']['tmp_name'][$key]);
 		// make some nice html to send back
